@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tech Dinamy Solutions | Sistemas POS y Tecnología para tu negocio</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1240;--blue:#2d3bd6;--cy:#1fd5e0;--bg:#f6f8ff;--tx:#1b2247;--mu:#5d678f;--ln:#e3e8f7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--tx);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+/* NAV */
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.02em;color:var(--navy)}
+.badge{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--blue));display:grid;place-items:center;color:var(--cy)}
+.badge svg{width:30px;height:30px}
+.brand small{display:block;font-size:.6rem;letter-spacing:.32em;color:var(--blue);font-weight:700;margin-top:-4px}
+.links{display:flex;gap:28px;font-size:.92rem;font-weight:500;color:var(--mu)}
+.links a:hover{color:var(--blue)}
+.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;font-size:.95rem;background:var(--blue);color:#fff;transition:.2s;border:2px solid var(--blue)}
+.btn:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-1px)}
+.btn.o{background:#fff;color:var(--blue)}
+.btn.o:hover{background:var(--blue);color:#fff}
+/* HERO */
+.hero{background:linear-gradient(180deg,var(--bg),#fff);padding:70px 0 60px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.pill{display:inline-block;background:#e8ebff;color:var(--blue);font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:99px;margin-bottom:18px}
+h1{font-size:clamp(2.2rem,4.6vw,3.5rem);line-height:1.1;font-weight:800;color:var(--navy);margin-bottom:18px}
+h1 em{font-style:normal;color:var(--blue)}
+.hero p{font-size:1.1rem;color:var(--mu);max-width:500px;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.checks{display:flex;gap:20px;flex-wrap:wrap;font-size:.88rem;color:var(--mu);font-weight:500}
+.checks span::before{content:"✓ ";color:var(--blue);font-weight:800}
+/* POS MOCKUP */
+.pos{background:var(--navy);border-radius:22px;padding:14px;box-shadow:0 30px 60px -20px rgba(11,18,64,.45);transform:rotate(1.5deg)}
+.screen{background:#fff;border-radius:12px;display:grid;grid-template-columns:1.5fr 1fr;min-height:340px;overflow:hidden}
+.prods{padding:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-content:start;background:var(--bg)}
+.top{grid-column:1/-1;display:flex;gap:6px;margin-bottom:2px}
+.top i{font-style:normal;font-size:.68rem;font-weight:700;padding:5px 10px;border-radius:99px;background:#fff;color:var(--mu)}
+.top i:first-child{background:var(--blue);color:#fff}
+.pr{background:#fff;border:1px solid var(--ln);border-radius:10px;padding:10px;font-size:.72rem;font-weight:600}
+.pr b{display:block;height:34px;border-radius:6px;margin-bottom:6px;background:linear-gradient(135deg,#dfe4ff,#c4f6f9)}
+.pr span{color:var(--blue);font-weight:800}
+.tk{padding:14px;display:flex;flex-direction:column;font-size:.74rem}
+.tk h4{font-size:.8rem;margin-bottom:8px;color:var(--navy)}
+.tk div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--ln)}
+.tot{margin-top:auto;font-weight:800;font-size:.95rem;color:var(--navy)}
+.pay{margin-top:10px;background:var(--blue);color:#fff;text-align:center;padding:10px;border-radius:8px;font-weight:700}
+/* SECCIONES */
+section{padding:84px 0}
+.t{text-align:center;max-width:680px;margin:0 auto 48px}
+.t small{color:var(--blue);font-weight:800;letter-spacing:.14em;font-size:.78rem}
+.t h2{font-size:clamp(1.7rem,3.2vw,2.5rem);color:var(--navy);line-height:1.2;margin:8px 0 10px;font-weight:800}
+.t p{color:var(--mu)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.card{border:1px solid var(--ln);border-radius:16px;padding:28px;background:#fff;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(45,59,214,.35);border-color:#c9d0ff}
+.ic{width:50px;height:50px;border-radius:13px;background:#eef0ff;display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px}
+.card h3{font-size:1.08rem;color:var(--navy);margin-bottom:6px}
+.card p{color:var(--mu);font-size:.93rem}
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split ul{list-style:none;margin-top:18px}
+.split li{padding:10px 0 10px 34px;position:relative;color:var(--mu);border-bottom:1px solid var(--ln)}
+.split li::before{content:"✓";position:absolute;left:0;top:10px;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:.72rem;display:grid;place-items:center;font-weight:800}
+.split li b{color:var(--navy)}
+.panel{background:linear-gradient(135deg,var(--blue),var(--navy));border-radius:22px;padding:34px;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:20px;text-align:center}
+.panel b{display:block;font-size:2rem;color:var(--cy)}
+.panel span{font-size:.82rem;opacity:.85}
+/* TECH */
+.tech{background:var(--navy);color:#fff;position:relative;background-image:url('bg.jpg');background-size:cover;background-position:center;background-blend-mode:overlay;background-attachment:fixed}
+.tech::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(31,213,224,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,213,224,.07) 1px,transparent 1px);background-size:44px 44px}
+.tech .wrap{position:relative}
+.tech .t h2{color:#fff}.tech .t p{color:#aab3e6}.tech .t small{color:var(--cy)}
+.tech .card{background:rgba(255,255,255,.05);border-color:rgba(31,213,224,.25)}
+.tech .card:hover{border-color:var(--cy);box-shadow:0 0 30px rgba(31,213,224,.2)}
+.tech .ic{background:rgba(31,213,224,.12)}
+.tech .card h3{color:#fff}.tech .card p{color:#aab3e6}
+/* PASOS */
+.steps .card{position:relative}
+.steps{counter-reset:s}
+.steps .card::after{counter-increment:s;content:"0" counter(s);position:absolute;right:20px;top:14px;font-size:2rem;font-weight:800;color:#e6e9ff}
+/* FAQ */
+.faq{max-width:760px;margin:auto}
+details{border:1px solid var(--ln);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700;color:var(--navy)}
+details p{color:var(--mu);margin-top:10px;font-size:.95rem}
+/* CONTACTO */
+.contact{background:var(--bg)}
+.box{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:#fff;border:1px solid var(--ln);border-radius:22px;padding:44px}
+.box h2{color:var(--navy);font-size:1.9rem;line-height:1.2;margin-bottom:10px}
+.box>div:first-child>p{color:var(--mu);margin-bottom:22px}
+.info p{padding:8px 0;color:var(--mu);font-size:.95rem}
+.info b{color:var(--navy);display:block;font-size:.78rem;letter-spacing:.08em}
+input,textarea,select{width:100%;padding:13px 14px;border:1px solid var(--ln);border-radius:10px;font:inherit;margin-bottom:12px;background:#fbfcff}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--blue);border-color:transparent}
+.box .btn{width:100%;text-align:center;cursor:pointer;font-family:inherit}
+footer{background:var(--navy);color:#aab3e6;text-align:center;padding:28px 0;font-size:.85rem}
+.wa{position:fixed;right:20px;bottom:20px;z-index:30;background:#25d366;color:#fff;border-radius:99px;padding:13px 20px;font-weight:700;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.card-img{width:100%;height:180px;object-fit:cover;transition:transform 0.4s ease;display:block;}
+.card .img-wrap{overflow:hidden;border-radius:10px;margin-bottom:16px;position:relative;}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,18,64,0.3),transparent);opacity:0;transition:opacity 0.3s;}
+.card:hover .card-img{transform:scale(1.1);}
+.card:hover .card-overlay{opacity:1;}
+.card-link{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--blue);margin-top:14px;font-size:0.9rem;}
+.card-link::after{content:"→";transition:transform 0.3s;}
+.card:hover .card-link{color:var(--navy);}
+.card:hover .card-link::after{transform:translateX(5px);}
+.card{border:none;box-shadow:0 12px 34px rgba(11,18,64,0.06);}
+.brands{padding:40px 0;background:#fff;border-bottom:1px solid var(--ln);text-align:center;}
+.brands p{color:var(--mu);font-size:.85rem;font-weight:700;letter-spacing:.1em;margin-bottom:20px;}
+.brands .logos{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;align-items:center;}
+.brands .logos span{font-size:1.4rem;font-weight:800;color:#9aa3c2;letter-spacing:-0.5px;transition:.2s;}
+.brands .logos span:hover{color:var(--blue);}
+
+/* POS INTUITIVO */
+.pos-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.pos-features{display:flex;flex-direction:column;gap:24px;}
+.pos-feat{display:flex;gap:16px;align-items:flex-start;transition:transform 0.3s;padding:16px;border-radius:16px;border:1px solid transparent;cursor:pointer;}
+.pos-feat:hover{background:#f8f9ff;border-color:#e2e7ff;transform:translateX(10px);}
+.pos-feat .icon{font-size:1.6rem;background:#fff;width:54px;height:54px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 16px rgba(0,0,0,0.04);}
+.pos-feat h3{font-size:1.15rem;color:var(--navy);margin-bottom:4px;}
+.pos-feat p{font-size:0.92rem;color:var(--mu);}
+.pos-img-wrapper{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(11,18,64,0.12);}
+.pos-img-wrapper img{width:100%;display:block;transition:transform 0.5s ease;}
+.pos-img-wrapper:hover img{transform:scale(1.03);}
+
+/* SERVICIOS ZIG-ZAG */
+.svc-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px;}
+.svc-row:last-child{margin-bottom:0;}
+.svc-img{border-radius:24px;overflow:hidden;box-shadow:0 24px 48px rgba(11,18,64,0.08);position:relative;}
+.svc-img img{width:100%;height:440px;object-fit:cover;display:block;transition:transform 0.5s ease;}
+.svc-img:hover img{transform:scale(1.05);}
+.svc-text{padding:10px 0;}
+.svc-text h3{font-size:2.2rem;color:var(--navy);margin-bottom:16px;line-height:1.2;font-weight:800;}
+.svc-text p{font-size:1.05rem;color:var(--mu);margin-bottom:24px;}
+.svc-text ul{list-style:none;margin-bottom:28px;}
+.svc-text li{position:relative;padding-left:34px;margin-bottom:14px;color:var(--navy);font-weight:600;}
+.svc-text li::before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:.7rem;display:grid;place-items:center;font-weight:800;}
+
+/* Dark Mode Overrides for Zig-Zag in .tech */
+.tech .svc-text h3{color:#fff;}
+.tech .svc-text p{color:#aab3e6;}
+.tech .svc-text li{color:#fff;}
+.tech .svc-text li::before{background:var(--cy);color:var(--navy);}
+.tech .svc-text .btn.o{background:transparent;color:#fff;border-color:rgba(31,213,224,.5);}
+.tech .svc-text .btn.o:hover{background:var(--cy);color:var(--navy);border-color:var(--cy);}
+
+@media(max-width:850px){.hero .wrap,.split,.box,.pos-layout,.svc-row{grid-template-columns:1fr}.links{display:none}.pos{transform:none}.brands .logos{gap:30px}.svc-row{gap:30px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+ <a href="#inicio" class="brand">
+  <img src="Gemini_Generated_Image_4j3u574j3u574j3u.jpg" alt="Tech Dinamy Logo" style="height: 50px; border-radius: 8px;">
+  <span>TECH DINAMY<small>SOLUTIONS</small></span>
+ </a>
+ <div class="links"><a href="#pos">Sistema POS</a><a href="#equipos">Equipos y Alquiler</a><a href="#soporte">Soporte Técnico</a><a href="#contacto">Contacto</a></div>
+ <a href="#contacto" class="btn">Contáctanos</a>
+</div></nav>
+
+<header class="hero" id="inicio"><div class="wrap">
+ <div>
+  <span class="pill">POS | Venta | Alquiler | Soporte Especializado</span>
+  <h1>El <em>sistema POS</em> y el aliado tecnológico que tu negocio necesita</h1>
+  <p>Impulsa tus ventas con nuestro sistema POS. Además, te apoyamos con venta y alquiler de equipos, y soporte técnico especializado, ya sea de forma remota o presencial (onsite).</p>
+  <div class="cta"><a href="#contacto" class="btn">Solicitar cotización</a><a href="#pos" class="btn o">Ver el POS</a></div>
+  <div class="checks"><span>Equipos de calidad</span><span>Alquiler flexible</span><span>Soporte remoto y onsite</span></div>
+ </div>
+ <div class="pos"><div class="screen">
+  <div class="prods">
+   <div class="top"><i>Todo</i><i>Bebidas</i><i>Comida</i><i>Otros</i></div>
+   <div class="pr"><b></b>Producto 1<br><span>$12.000</span></div><div class="pr"><b></b>Producto 2<br><span>$8.500</span></div><div class="pr"><b></b>Producto 3<br><span>$15.000</span></div>
+   <div class="pr"><b></b>Producto 4<br><span>$6.000</span></div><div class="pr"><b></b>Producto 5<br><span>$22.000</span></div><div class="pr"><b></b>Producto 6<br><span>$9.900</span></div>
+  </div>
+  <div class="tk"><h4>Venta #0125</h4>
+   <div><span>2 × Producto 1</span><b>$24.000</b></div><div><span>1 × Producto 3</span><b>$15.000</b></div><div><span>3 × Producto 4</span><b>$18.000</b></div>
+   <div class="tot"><span>Total</span><span style="float:right">$57.000</span></div><div class="pay" style="display:block">Cobrar</div>
+  </div></div></div>
+</div></header>
+
+<div class="brands"><div class="wrap">
+ <p>CON LA CONFIANZA DE LAS MEJORES MARCAS</p>
+ <div class="logos">
+  <span style="font-style:italic">EPSON</span>
+  <span>Zebra</span>
+  <span>BEMATECH</span>
+  <span>Star</span>
+  <span style="font-style:italic; font-family:serif">hp</span>
+  <span>LENOVO</span>
+ </div>
+</div></div>
+
+<section id="pos" style="background:var(--bg);"><div class="wrap">
+ <div class="t"><small>SISTEMA POS</small><h2>Todo lo que necesitas para vender más y controlar mejor</h2><p>Nuestro fuerte desde el inicio: puntos de venta para restaurantes, tiendas, droguerías, bares y más.</p></div>
+ <div class="pos-layout">
+  <div class="pos-img-wrapper">
+   <img src="hardware.jpg" alt="Sistema POS en acción">
+  </div>
+  <div class="pos-features">
+   <div class="pos-feat"><div class="icon">🧾</div><div><h3>Facturación Rápida</h3><p>Vende en segundos, genera facturas electrónicas y recibos desde cualquier dispositivo.</p></div></div>
+   <div class="pos-feat"><div class="icon">📦</div><div><h3>Control de Inventario</h3><p>Gestión de existencias en tiempo real con alertas automáticas de stock bajo.</p></div></div>
+   <div class="pos-feat"><div class="icon">📊</div><div><h3>Reportes en Tiempo Real</h3><p>Visualiza tus ventas por día, producto, vendedor o sucursal desde tu celular.</p></div></div>
+   <div class="pos-feat"><div class="icon">💳</div><div><h3>Múltiples Pagos</h3><p>Acepta efectivo, tarjetas, transferencias y crea pagos combinados sin enredos.</p></div></div>
+  </div>
+ </div>
+</div></section>
+
+<section><div class="wrap split">
+ <div><div class="t" style="text-align:left;margin:0"><small>PARA CADA NEGOCIO</small><h2>Un POS adaptado a tu tipo de negocio</h2></div>
+  <ul><li><b>Restaurantes y bares:</b> mesas, comandas y cocina.</li><li><b>Tiendas y minimercados:</b> código de barras e inventario.</li><li><b>Droguerías y ferreterías:</b> catálogo amplio y control por lote.</li><li><b>Varias sucursales:</b> todo centralizado en un solo lugar.</li></ul></div>
+ <div class="panel"><div><b>POS</b><span>Especialidad de la casa</span></div><div><b>1 día</b><span>Puesta en marcha*</span></div><div><b>24/7</b><span>Acompañamiento*</span></div><div><b>100%</b><span>Capacitación incluida*</span></div></div>
+</div></section>
+
+<section class="tech" id="equipos"><div class="wrap">
+ <div class="t" id="soporte"><small style="color:var(--cy)">SOLUCIONES TECNOLÓGICAS</small><h2 style="color:#fff">Infraestructura que impulsa tu negocio</h2><p>No solo software. Cubrimos absolutamente todas las necesidades tecnológicas de tu empresa.</p></div>
+ 
+ <div class="svc-row">
+  <div class="svc-img"><img src="hardware.jpg" alt="Hardware y Equipos"></div>
+  <div class="svc-text">
+   <h3>Venta y Alquiler de Hardware</h3>
+   <p>Te proveemos los mejores equipos del mercado, ajustados a tu presupuesto, ya sea mediante compra directa o esquemas flexibles de alquiler.</p>
+   <ul>
+    <li>Equipos POS y periféricos de alta gama.</li>
+    <li>Impresoras térmicas y lectores de códigos de barras.</li>
+    <li>Planes de alquiler para eventos o picos de temporada.</li>
+   </ul>
+   <a href="#contacto" class="btn">Cotizar Hardware</a>
+  </div>
+ </div>
+
+ <div class="svc-row" style="direction:rtl;">
+  <div class="svc-img"><img src="soporte.jpg" alt="Soporte Técnico"></div>
+  <div class="svc-text" style="direction:ltr;">
+   <h3>Soporte Técnico Especializado</h3>
+   <p>Tu operación no puede detenerse. Nuestro equipo de ingenieros está listo para resolver cualquier incidente tecnológico de forma inmediata.</p>
+   <ul>
+    <li><b>Soporte Remoto:</b> Solución inmediata a problemas de software y configuración.</li>
+    <li><b>Soporte Onsite:</b> Visitas técnicas presenciales para fallas físicas y cableado.</li>
+    <li><b>Mantenimiento preventivo:</b> Cuidamos la vida útil de tus equipos.</li>
+   </ul>
+   <a href="#contacto" class="btn">Solicitar Asistencia</a>
+  </div>
+ </div>
+
+</div></section>
+
+<section id="proceso"><div class="wrap">
+ <div class="t"><small>CÓMO TRABAJAMOS</small><h2>Simple, claro y sin complicaciones</h2></div>
+ <div class="grid steps">
+  <div class="card"><h3>Diagnóstico</h3><p>Entendemos tu negocio y lo que necesitas.</p></div>
+  <div class="card"><h3>Propuesta</h3><p>Cotización clara con equipos, software y tiempos.</p></div>
+  <div class="card"><h3>Instalación</h3><p>Montaje limpio sin afectar tu operación.</p></div>
+  <div class="card"><h3>Soporte</h3><p>Te acompañamos después de la entrega.</p></div>
+ </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+ <div class="t"><small>PREGUNTAS FRECUENTES</small><h2>Resolvemos tus dudas</h2></div>
+ <div class="faq">
+  <details><summary>¿Qué incluye el sistema POS?</summary><p>Facturación, inventario, reportes, usuarios y medios de pago. TODO: ajusta según tu oferta real.</p></details>
+  <details><summary>¿Cómo funciona el alquiler de equipos?</summary><p>Ofrecemos esquemas de alquiler a medida para que equipes tu negocio sin grandes inversiones iniciales.</p></details>
+  <details><summary>¿Cómo es el servicio de soporte técnico?</summary><p>Brindamos soporte especializado de forma remota para agilizar soluciones, y presencial (onsite) cuando la situación lo requiere.</p></details>
+  <details><summary>¿Cómo solicito una cotización?</summary><p>Escríbenos por WhatsApp o completa el formulario de contacto.</p></details>
+ </div>
+</div></section>
+
+<section class="contact" id="contacto"><div class="wrap"><div class="box">
+ <div>
+  <h2>Hablemos de tu negocio</h2><p>Cuéntanos qué necesitas y te enviamos una propuesta sin compromiso.</p>
+  <div class="info">
+   <p><b>TELÉFONO</b>TODO: 300 000 0000</p>
+   <p><b>CORREO</b>TODO: contacto@techdinamy.com</p>
+   <p><b>DIRECCIÓN</b>TODO: Dirección, ciudad</p>
+   <p><b>HORARIO</b>TODO: Lunes a viernes 8:00 a.m. – 6:00 p.m.</p>
+  </div>
+ </div>
+ <form onsubmit="event.preventDefault();var f=this;window.open('https://wa.me/57TODONUMERO?text='+encodeURIComponent('Hola Tech Dinamy, soy '+f.n.value+' ('+f.t.value+'). Me interesa: '+f.s.value+'. '+f.m.value),'_blank')">
+  <input name="n" placeholder="Nombre" required>
+  <input name="t" placeholder="Teléfono" required>
+  <select name="s"><option>Sistema POS</option><option>Venta de equipos</option><option>Alquiler de tecnología</option><option>Soporte Técnico (Remoto/Onsite)</option></select>
+  <textarea name="m" rows="4" placeholder="Cuéntanos qué necesitas"></textarea>
+  <button class="btn" type="submit">Enviar por WhatsApp</button>
+ </form>
+</div></div></section>
+
+<a class="wa" href="https://wa.me/57TODONUMERO" target="_blank">WhatsApp</a>
+<footer>© 2026 Tech Dinamy Solutions · Sistemas POS y Tecnología</footer>
+</body>
+</html>
